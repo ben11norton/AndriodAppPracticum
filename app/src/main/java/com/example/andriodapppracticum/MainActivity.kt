@@ -131,10 +131,12 @@ class MainActivity : AppCompatActivity() {
                 ratingArray[globalSongCounter] = songRating
                 commentArray[globalSongCounter] = userComment
 
-                // 4. then we increment our global variable song counter
-                // to ensure we go to the next song for saving
-                // and to update our song number header
-                globalSongCounter++
+                // 4. then we increment our global variable song counter until it has cycled through all 4 songs (0-3 indexing)
+                // to ensure we go to the next song for saving and to update our song number header
+                if (globalSongCounter < 3){
+                    globalSongCounter++
+
+                }
 
                 // 5. then reset the input fields ready for the next song
                 songTitleInput.text = songTitleInputTextPrompt
