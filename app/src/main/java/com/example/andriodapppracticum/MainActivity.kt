@@ -63,6 +63,12 @@ class MainActivity : AppCompatActivity() {
         // global array index counter to keep track of what song we are on
         var globalSongCounter: Int = 0
 
+        // store our original text prompts for out song input fields for the main screen
+        val songTitleInputTextPrompt = songTitleInput.text
+        val artistNameInputTextPrompt = songTitleInput.text
+        val songRatingInputTextPrompt = songRatingInput.text
+        val userCommentInputTextPrompt = userCommentInput.text
+
 
         // Section for our onClick events
 
@@ -114,9 +120,15 @@ class MainActivity : AppCompatActivity() {
             commentArray[globalSongCounter] = userComment
 
             // 4. then we increment our global variable song counter
-            // to ensure we go to the next song
+            // to ensure we go to the next song for saving
+            // and to update our song number header
             globalSongCounter++
 
+            // 5. then reset the input fields ready for the next song
+            songTitleInput.text = songTitleInputTextPrompt
+            artistNameInput.text = artistNameInputTextPrompt
+            songRatingInput.text = songRatingInputTextPrompt
+            userCommentInput.text = userCommentInputTextPrompt
         }
 
 
