@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         // main screen text view prompt
         val mainScreenUserPrompt: TextView = findViewById(R.id.mainScreenInputPrompt)
+        val songNumberHeader: TextView = findViewById(R.id.songNumberHeader)
 
         // initially have the main screen input fields, buttons, and text view as hidden
         songTitleInput.visibility = View.INVISIBLE
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         goHomeButton.visibility = View.INVISIBLE
         mainScreenUserPrompt.visibility = View.INVISIBLE
         saveSongButton.visibility = View.INVISIBLE
+        songNumberHeader.visibility = View.INVISIBLE
 
 
         // Section for our global variable
@@ -57,6 +59,9 @@ class MainActivity : AppCompatActivity() {
         val ratingArray: Array<Int> = arrayOf()
 
         val commentArray: Array<String> = arrayOf()
+
+        // global array index counter to keep track of what song we are on
+        var globalSongCounter: Int = 0
 
 
         // Section for our onClick events
@@ -81,9 +86,38 @@ class MainActivity : AppCompatActivity() {
 
             // show our user prompt to indicate the user to fill out the details
             mainScreenUserPrompt.visibility = View.VISIBLE
+
+            // show our song number header and display the first number
+            songNumberHeader.visibility = View.VISIBLE
+            // we increment the global counter by 1 to mitigate the 0 based indexing so our first
+            // song shows as Song 1 not Song 0
+            songNumberHeader.text = "Song ${globalSongCounter + 1}"
         }
 
+        // clicking the save song button to add one of the 4 songs to the playlist
+        saveSongButton.setOnClickListener(){
+            // 1. grab the text values from the input fields
+            val songTitle = songTitleInput.text.toString()
+            val artistName = artistNameInput.text.toString()
+            val songRatingString = songRatingInput.text.toString()
+            val userComment = userCommentInput.text.toString()
 
+            // 2. check to ensure the user has inputted a valid number for songRating
+            // if they have then we can continue
+            // else we need to display a message to enter a valid number
+
+            // 3. store the values in our parallel arrays using
+            // our global index counter to tell us to move through the 4 songs
+            songsArray[globalSongCounter] = songTitle
+            artistArray[globalSongCounter] = artistName
+            ratingArray[globalSongCounter] = songRatingString.toInt()
+            commentArray[globalSongCounter] = userComment
+
+            // 4. then we increment our global variable song counter
+            // to ensure we go to the next song
+            globalSongCounter++
+
+        }
 
 
     }
