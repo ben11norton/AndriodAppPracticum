@@ -53,6 +53,15 @@ class MainActivity : AppCompatActivity() {
         ratingNumberValidation.visibility = View.INVISIBLE
 
 
+        // Playlist Details page layout variables
+        val displayCurrentSongDetailsBtn: Button = findViewById(R.id.displayCurrentSongDetails)
+        val displayAvgRatingBtn: Button = findViewById(R.id.displayAvgRatingBtn)
+
+        // initially we also hide our Playlist details page buttons
+        displayCurrentSongDetailsBtn.visibility = View.INVISIBLE
+        displayAvgRatingBtn.visibility = View.INVISIBLE
+
+
         // Section for our global variable
         val songsArray: Array<String> = arrayOf()
 
@@ -159,13 +168,13 @@ class MainActivity : AppCompatActivity() {
             songNumberHeader.visibility = View.INVISIBLE
 
             // 2. show button which when clicked displays list of songs
+            displayCurrentSongDetailsBtn.visibility = View.INVISIBLE
 
             // 3. show button which when clicked calculates and displays the average song rating
+            displayAvgRatingBtn.visibility = View.INVISIBLE
 
 
             // 4. keep the goHomeButtonVisible
-
-
         }
 
 
