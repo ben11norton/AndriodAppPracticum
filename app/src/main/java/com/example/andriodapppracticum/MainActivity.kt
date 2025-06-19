@@ -135,7 +135,6 @@ class MainActivity : AppCompatActivity() {
                 // to ensure we go to the next song for saving and to update our song number header
                 if (globalSongCounter < 3){
                     globalSongCounter++
-
                 }
 
                 // 5. then reset the input fields ready for the next song
@@ -144,6 +143,35 @@ class MainActivity : AppCompatActivity() {
                 songRatingInput.text = songRatingInputTextPrompt
                 userCommentInput.text = userCommentInputTextPrompt
             }
+        }
+
+
+        // clicking go To Details Button to navigate to the next screen
+        goToDetailsButton.setOnClickListener(){
+            // 1. hide our main page content
+            songTitleInput.visibility = View.INVISIBLE
+            artistNameInput.visibility = View.INVISIBLE
+            songRatingInput.visibility = View.INVISIBLE
+            userCommentInput.visibility = View.INVISIBLE
+            saveSongButton.visibility = View.INVISIBLE
+            goToDetailsButton.visibility = View.INVISIBLE
+            mainScreenUserPrompt.visibility = View.INVISIBLE
+            songNumberHeader.visibility = View.INVISIBLE
+
+            // 2. show button which when clicked displays list of songs
+
+            // 3. show button which when clicked calculates and displays the average song rating
+
+
+            // 4. keep the goHomeButtonVisible
+
+
+        }
+
+
+        // on click function to go back to home page:
+        goHomeButton.setOnClickListener(){
+
         }
 
 
