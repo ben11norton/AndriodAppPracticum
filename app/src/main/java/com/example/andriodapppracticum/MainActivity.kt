@@ -189,7 +189,7 @@ class MainActivity : AppCompatActivity() {
             // make sure the user has saved atleast one song using our global index counter
             // if they have then show the song details
             // else show 'Song details currently unavailable please add a song'
-            if (globalSongCounter > 0){
+            if (globalSongCounter > 0) {
                 // then loop through the existing songs in the playlist
                 // using our 4 parallel arrays to display the corresponding details
                 // here we need another index counter in order to access the corresponding details for the song
@@ -199,12 +199,17 @@ class MainActivity : AppCompatActivity() {
                     var currentSongTitle = songsArray[songDetailsIndexIterator]
                     var currentSongArtistName = artistArray[songDetailsIndexIterator]
                     var currentSongRating = ratingArray[songDetailsIndexIterator]
-                    var currentSongCommet = commentArray[songDetailsIndexIterator]
+                    var currentSongComment = commentArray[songDetailsIndexIterator]
 
                     // 2. then we append the details to our songDetailsDisplayBox
+
+
+                    // 3. then once we have appended out details to the text view
+                    // we increment our index counter to get the next set of song details
+                    songDetailsIndexIterator++
                 }
 
-            } else{
+            } else {
 
             }
         }
