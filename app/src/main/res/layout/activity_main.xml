@@ -148,13 +148,23 @@
 
     <TextView
         android:id="@+id/songDetailsDisplayBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="14dp"
         android:layout_marginStart="68dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.283" />
+
+    <TextView
+        android:id="@+id/averageRatingDisplayBox"
+        android:layout_width="0dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.387" />
 
     <TextView
         android:id="@+id/songNumberHeader"

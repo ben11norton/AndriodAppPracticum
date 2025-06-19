@@ -57,11 +57,13 @@ class MainActivity : AppCompatActivity() {
         val displayCurrentSongDetailsBtn: Button = findViewById(R.id.displayCurrentSongDetails)
         val displayAvgRatingBtn: Button = findViewById(R.id.displayAvgRatingBtn)
         val songDetailsDisplayBox: TextView = findViewById(R.id.songDetailsDisplayBox)
+        val averageRatingDisplayBox: TextView = findViewById(R.id.averageRatingDisplayBox)
 
         // initially we also hide our Playlist details page buttons
         displayCurrentSongDetailsBtn.visibility = View.INVISIBLE
         displayAvgRatingBtn.visibility = View.INVISIBLE
         displayAvgRatingBtn.visibility = View.INVISIBLE
+        averageRatingDisplayBox.visibility = View.INVISIBLE
 
 
         // Section for our global variable
@@ -224,6 +226,35 @@ class MainActivity : AppCompatActivity() {
             songDetailsDisplayBox.text = songDetailsStringDisplay
         }
 
+        // clicking the display average button to show the average rating of existing songs in our playlist
+        displayAvgRatingBtn.setOnClickListener(){
+            // 1. unhide our averageRatingDisplayBox text view
+            averageRatingDisplayBox.visibility = View.VISIBLE
+
+            var averageRatingStringDisplay = ""
+
+            // 2. check to see if the user has saved any songs
+            if (globalSongCounter > 0) {
+                var ratingSum = 0
+                // 3. loop through our ratings array to get the sum of all the ratings
+                for (songRating in ratingArray){
+                    ratingSum += songRating
+                }
+
+                // 4. then using our sum of ratings we can calculate the average rating
+                var averageSongRating = ratingSum / ratingArray.size
+
+                // 5. set our average result to be displayed in our display string
+                averageRatingStringDisplay = "Current Average Song Rating: $averageSongRating"
+
+
+            } else {
+                averageRatingStringDisplay = "There are currently no songs to show the rating for this playlist, please add a song."
+            }
+
+            // display the display string result in our text view
+            averageRatingDisplayBox.text = averageRatingStringDisplay
+        }
 
 
         // on click function to go back to home page:
