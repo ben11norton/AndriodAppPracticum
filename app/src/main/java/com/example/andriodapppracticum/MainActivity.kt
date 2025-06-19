@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -33,11 +34,17 @@ class MainActivity : AppCompatActivity() {
         val goToDetailsButton: Button = findViewById(R.id.goToDetailsBtn)
         val goHomeButton: Button = findViewById(R.id.goBackToHomePageBtn)
 
-        // initally have the main screen input fields as hidden
+        // main screen text view prompt
+        val mainScreenUserPrompt: TextView = findViewById(R.id.mainScreenInputPrompt)
+
+        // initally have the main screen input fields, buttons, and text view as hidden
         songTitleInput.visibility = View.INVISIBLE
         artistNameInput.visibility = View.INVISIBLE
         songRatingInput.visibility = View.INVISIBLE
         userCommentInput.visibility = View.INVISIBLE
+        goToDetailsButton.visibility = View.INVISIBLE
+        goHomeButton.visibility = View.INVISIBLE
+        mainScreenUserPrompt.visibility = View.INVISIBLE
 
 
         // Section for our global variable
@@ -66,6 +73,9 @@ class MainActivity : AppCompatActivity() {
             // show our go to details and go home buttons
             goToDetailsButton.visibility = View.VISIBLE
             goHomeButton.visibility = View.VISIBLE
+
+            // show our user prompt to indicate the user to fill out the details
+            mainScreenUserPrompt.visibility = View.VISIBLE
         }
 
 
