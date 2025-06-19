@@ -186,15 +186,16 @@ class MainActivity : AppCompatActivity() {
             // unhide the songDetailsDisplayBox
             songDetailsDisplayBox.visibility = View.VISIBLE
 
+            // we need a string which we can append our details to
+            var songDetailsStringDisplay = ""
+
             // make sure the user has saved atleast one song using our global index counter
             // if they have then show the song details
-            // else show 'Song details currently unavailable please add a song'
+            // else show message saying no details are currently available for the playlist
             if (globalSongCounter > 0) {
                 // then loop through the existing songs in the playlist
                 // using our 4 parallel arrays to display the corresponding details
 
-                // we need a string which we can append our details to
-                var  songDetailsStringDisplay = ""
                 // here we need another index counter in order to access the corresponding details for the song
                 var songDetailsIndexIterator = 0;
                 for (song in songsArray){
@@ -216,8 +217,11 @@ class MainActivity : AppCompatActivity() {
                 }
 
             } else {
-
+                songDetailsStringDisplay = "There are currently no song details for this playlist, please add a song."
             }
+
+            // Finally show our song details text result in the song detail textView
+            songDetailsDisplayBox.text = songDetailsStringDisplay
         }
 
 
