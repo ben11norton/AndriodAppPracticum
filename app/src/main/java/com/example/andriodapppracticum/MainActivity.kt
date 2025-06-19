@@ -48,6 +48,19 @@ class MainActivity : AppCompatActivity() {
 
         // Section for our onClick events
 
+        // when the user clicks the Add to playlist button
+        // show the 4 input fields
+        addSongButton.setOnClickListener(){
+            // first we hide our add to playlist button
+            addSongButton.visibility = View.INVISIBLE
+
+            // then we show our 4 input fields
+            songTitleInput.visibility = View.VISIBLE
+            artistNameInput.visibility = View.VISIBLE
+            songRatingInput.visibility = View.VISIBLE
+            userCommentInput.visibility = View.VISIBLE
+        }
+
 
     }
 }
