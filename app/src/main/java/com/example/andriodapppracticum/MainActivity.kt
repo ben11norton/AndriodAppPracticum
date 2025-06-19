@@ -56,9 +56,11 @@ class MainActivity : AppCompatActivity() {
         // Playlist Details page layout variables
         val displayCurrentSongDetailsBtn: Button = findViewById(R.id.displayCurrentSongDetails)
         val displayAvgRatingBtn: Button = findViewById(R.id.displayAvgRatingBtn)
+        val songDetailsDisplayBox: TextView = findViewById(R.id.songDetailsDisplayBox)
 
         // initially we also hide our Playlist details page buttons
         displayCurrentSongDetailsBtn.visibility = View.INVISIBLE
+        displayAvgRatingBtn.visibility = View.INVISIBLE
         displayAvgRatingBtn.visibility = View.INVISIBLE
 
 
@@ -176,6 +178,37 @@ class MainActivity : AppCompatActivity() {
 
             // 4. keep the goHomeButtonVisible
         }
+
+
+        // when clicking the display details button it shows the list of songs
+        // alongside the corresponding details using a loop
+        displayCurrentSongDetailsBtn.setOnClickListener(){
+            // unhide the songDetailsDisplayBox
+            songDetailsDisplayBox.visibility = View.VISIBLE
+
+            // make sure the user has saved atleast one song using our global index counter
+            // if they have then show the song details
+            // else show 'Song details currently unavailable please add a song'
+            if (globalSongCounter > 0){
+                // then loop through the existing songs in the playlist
+                // using our 4 parallel arrays to display the corresponding details
+                // here we need another index counter in order to access the corresponding details for the song
+                var songDetailsIndexIterator = 0;
+                for (song in songsArray){
+                    // 1. first we get our song details and store them in variables
+                    var currentSongTitle = songsArray[songDetailsIndexIterator]
+                    var currentSongArtistName = artistArray[songDetailsIndexIterator]
+                    var currentSongRating = ratingArray[songDetailsIndexIterator]
+                    var currentSongCommet = commentArray[songDetailsIndexIterator]
+
+                    // 2. then we append the details to our songDetailsDisplayBox
+                }
+
+            } else{
+
+            }
+        }
+
 
 
         // on click function to go back to home page:
