@@ -35,9 +35,10 @@ class MainActivity : AppCompatActivity() {
         val goHomeButton: Button = findViewById(R.id.goBackToHomePageBtn)
         val saveSongButton: Button = findViewById(R.id.saveSongBtn)
 
-        // main screen text view prompt
+        // main screen text view prompt, header, and validation
         val mainScreenUserPrompt: TextView = findViewById(R.id.mainScreenInputPrompt)
         val songNumberHeader: TextView = findViewById(R.id.songNumberHeader)
+        val ratingNumberValidation: TextView = findViewById(R.id.ratingNumberValidation)
 
         // initially have the main screen input fields, buttons, and text view as hidden
         songTitleInput.visibility = View.INVISIBLE
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         mainScreenUserPrompt.visibility = View.INVISIBLE
         saveSongButton.visibility = View.INVISIBLE
         songNumberHeader.visibility = View.INVISIBLE
+        ratingNumberValidation.visibility = View.INVISIBLE
 
 
         // Section for our global variable
@@ -111,24 +113,35 @@ class MainActivity : AppCompatActivity() {
             // 2. check to ensure the user has inputted a valid number for songRating
             // if they have then we can continue
             // else we need to display a message to enter a valid number
+            val songRating = songRatingString.toIntOrNull()
 
-            // 3. store the values in our parallel arrays using
-            // our global index counter to tell us to move through the 4 songs
-            songsArray[globalSongCounter] = songTitle
-            artistArray[globalSongCounter] = artistName
-            ratingArray[globalSongCounter] = songRatingString.toInt()
-            commentArray[globalSongCounter] = userComment
+            if (songRating == null){
+                // if it's not a valid number then we show a pop up message
+                // to tell the user to input a number for song rating
+                ratingNumberValidation.visibility = View.VISIBLE
 
-            // 4. then we increment our global variable song counter
-            // to ensure we go to the next song for saving
-            // and to update our song number header
-            globalSongCounter++
 
-            // 5. then reset the input fields ready for the next song
-            songTitleInput.text = songTitleInputTextPrompt
-            artistNameInput.text = artistNameInputTextPrompt
-            songRatingInput.text = songRatingInputTextPrompt
-            userCommentInput.text = userCommentInputTextPrompt
+            } else {
+                // if song rating is a valid number then we continue with the saving of song details
+
+                // 3. store the values in our parallel arrays using
+                // our global index counter to tell us to move through the 4 songs
+                songsArray[globalSongCounter] = songTitle
+                artistArray[globalSongCounter] = artistName
+                ratingArray[globalSongCounter] = songRating
+                commentArray[globalSongCounter] = userComment
+
+                // 4. then we increment our global variable song counter
+                // to ensure we go to the next song for saving
+                // and to update our song number header
+                globalSongCounter++
+
+                // 5. then reset the input fields ready for the next song
+                songTitleInput.text = songTitleInputTextPrompt
+                artistNameInput.text = artistNameInputTextPrompt
+                songRatingInput.text = songRatingInputTextPrompt
+                userCommentInput.text = userCommentInputTextPrompt
+            }
         }
 
 
