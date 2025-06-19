@@ -29,6 +29,10 @@ class MainActivity : AppCompatActivity() {
         val songRatingInput: EditText = findViewById(R.id.songRatingInput)
         val userCommentInput: EditText = findViewById(R.id.userCommentInput)
 
+        // main screen buttons
+        val goToDetailsButton: Button = findViewById(R.id.goToDetailsBtn)
+        val goHomeButton: Button = findViewById(R.id.goBackToHomePageBtn)
+
         // initally have the main screen input fields as hidden
         songTitleInput.visibility = View.INVISIBLE
         artistNameInput.visibility = View.INVISIBLE
@@ -49,7 +53,6 @@ class MainActivity : AppCompatActivity() {
         // Section for our onClick events
 
         // when the user clicks the Add to playlist button
-        // show the 4 input fields
         addSongButton.setOnClickListener(){
             // first we hide our add to playlist button
             addSongButton.visibility = View.INVISIBLE
@@ -59,7 +62,13 @@ class MainActivity : AppCompatActivity() {
             artistNameInput.visibility = View.VISIBLE
             songRatingInput.visibility = View.VISIBLE
             userCommentInput.visibility = View.VISIBLE
+
+            // show our go to details and go home buttons
+            goToDetailsButton.visibility = View.VISIBLE
+            goHomeButton.visibility = View.VISIBLE
         }
+
+
 
 
     }
