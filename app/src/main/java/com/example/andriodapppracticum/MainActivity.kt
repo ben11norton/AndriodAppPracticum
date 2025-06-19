@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
             songNumberHeader.visibility = View.VISIBLE
             // we increment the global counter by 1 to mitigate the 0 based indexing so our first
             // song shows as Song 1 not Song 0
-            songNumberHeader.text = "Song ${globalSongCounter + 1}"
+            songNumberHeader.text = "Song $globalSongCounter + 1"
         }
 
         // clicking the save song button to add one of the 4 songs to the playlist
@@ -192,6 +192,9 @@ class MainActivity : AppCompatActivity() {
             if (globalSongCounter > 0) {
                 // then loop through the existing songs in the playlist
                 // using our 4 parallel arrays to display the corresponding details
+
+                // we need a string which we can append our details to
+                var  songDetailsStringDisplay = ""
                 // here we need another index counter in order to access the corresponding details for the song
                 var songDetailsIndexIterator = 0;
                 for (song in songsArray){
@@ -202,7 +205,10 @@ class MainActivity : AppCompatActivity() {
                     var currentSongComment = commentArray[songDetailsIndexIterator]
 
                     // 2. then we append the details to our songDetailsDisplayBox
-
+                    songDetailsStringDisplay += "\nSong Title: $currentSongTitle." +
+                            "\nArtist: $currentSongArtistName." +
+                            "\nRating: $currentSongRating." +
+                            "\nComment: $currentSongComment.\n" +
 
                     // 3. then once we have appended out details to the text view
                     // we increment our index counter to get the next set of song details
