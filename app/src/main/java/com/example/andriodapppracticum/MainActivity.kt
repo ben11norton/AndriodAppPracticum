@@ -1,6 +1,9 @@
 package com.example.andriodapppracticum
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,11 +20,23 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // here we declare our layout variables
+        // Section for our layout variables
+        val addSongButton: Button = findViewById(R.id.addSongToPlaylistBtn)
 
-        // here we declare our global variables
+        // main screen input fields
+        val songTitleInput: EditText = findViewById(R.id.songTitleInput)
+        val artistNameInput: EditText = findViewById(R.id.artistNameInput)
+        val songRatingInput: EditText = findViewById(R.id.songRatingInput)
+        val userCommentInput: EditText = findViewById(R.id.userCommentInput)
 
-        // 1. declaring our 4 parallel arrays
+        // initally have the main screen input fields as hidden
+        songTitleInput.visibility = View.INVISIBLE
+        artistNameInput.visibility = View.INVISIBLE
+        songRatingInput.visibility = View.INVISIBLE
+        userCommentInput.visibility = View.INVISIBLE
+
+
+        // Section for our global variable
         val songsArray: Array<String> = arrayOf()
 
         val artistArray: Array<String> = arrayOf()
@@ -29,6 +44,10 @@ class MainActivity : AppCompatActivity() {
         val ratingArray: Array<Int> = arrayOf()
 
         val commentArray: Array<String> = arrayOf()
+
+
+        // Section for our onClick events
+
 
     }
 }
