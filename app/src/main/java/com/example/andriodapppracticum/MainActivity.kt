@@ -16,5 +16,19 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // here we declare our layout variables
+
+        // here we declare our global variables
+
+        // 1. declaring our 4 parallel arrays
+        val songsArray: Array<String> = arrayOf()
+
+        val artistArray: Array<String> = arrayOf()
+
+        val ratingArray: Array<Int> = arrayOf()
+
+        val commentArray: Array<String> = arrayOf()
+
     }
 }
