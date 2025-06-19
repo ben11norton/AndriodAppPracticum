@@ -67,22 +67,13 @@ class MainActivity : AppCompatActivity() {
 
 
         // Section for our global variable
-        val songsArray: Array<String> = arrayOf()
-
-        val artistArray: Array<String> = arrayOf()
-
-        val ratingArray: Array<Int> = arrayOf()
-
-        val commentArray: Array<String> = arrayOf()
+        val songsArray = Array(4) { "" }
+        val artistArray = Array(4) { "" }
+        val ratingArray = Array(4) { 0 }
+        val commentArray = Array(4) { "" }
 
         // global array index counter to keep track of what song we are on
         var globalSongCounter: Int = 0
-
-        // store our original text prompts for out song input fields for the main screen
-        val songTitleInputTextPrompt = songTitleInput.text
-        val artistNameInputTextPrompt = songTitleInput.text
-        val songRatingInputTextPrompt = songRatingInput.text
-        val userCommentInputTextPrompt = userCommentInput.text
 
 
         // Section for our onClick events
@@ -112,7 +103,8 @@ class MainActivity : AppCompatActivity() {
             songNumberHeader.visibility = View.VISIBLE
             // we increment the global counter by 1 to mitigate the 0 based indexing so our first
             // song shows as Song 1 not Song 0
-            songNumberHeader.text = "Song $globalSongCounter + 1"
+            var songDisplayCounter = globalSongCounter + 1
+            songNumberHeader.text = "Song $songDisplayCounter"
         }
 
         // clicking the save song button to add one of the 4 songs to the playlist
@@ -151,10 +143,17 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 // 5. then reset the input fields ready for the next song
-                songTitleInput.text = songTitleInputTextPrompt
-                artistNameInput.text = artistNameInputTextPrompt
-                songRatingInput.text = songRatingInputTextPrompt
-                userCommentInput.text = userCommentInputTextPrompt
+                songTitleInput.text.clear()
+                songTitleInput.hint = "Enter song title"
+
+                artistNameInput.text.clear()
+                artistNameInput.hint = "Enter artist name"
+
+                songRatingInput.text.clear()
+                songRatingInput.hint = "Enter rating (1-5)"
+
+                userCommentInput.text.clear()
+                userCommentInput.hint = "Enter comment"
             }
         }
 
